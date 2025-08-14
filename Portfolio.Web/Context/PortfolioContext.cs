@@ -7,7 +7,7 @@ namespace Portfolio.Web.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("server = MERVE; database=MyAcademyPortfolioDb; integrated security=true; trustServerCertificate=true");
+            optionsBuilder.UseSqlServer("server = localhost\\SQLEXPRESS; database=MyAcademyPortfolioDb; integrated security=true; trustServerCertificate=true");
         }
 
         //pluralize
