@@ -1,0 +1,38 @@
+﻿@model List<UserMessage>
+@{
+    ViewData["Title"] = "Mesajlar";
+    Layout = "~/Views/AdminLayout/Layout.cshtml";
+    int count = 0;
+}
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>#</th>
+        <th>Ad Soyad</th>
+        <th>Email</th>
+        <th>Konu</th>
+        <th>Mesaj</th>
+        <th>Durum</th>
+        <th>İşlemler</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        count++;
+        <tr>
+            <th>@count</th>
+            <td>@item.Name</td>
+            <td>@item.Email</td>
+            <td>@item.Subject</td>
+            <td>@item.MessageBody</td>
+            <td>@item.IsRead</td>
+            <td>
+                <a href="/UserMessage/DeleteUserMessage/@item.UserMessageId" class="btn btn-outline-danger">Sil</a>
+                <a href="/UserMessage/UpdateUserMessage/@item.UserMessageId" class="btn btn-outline-info">Güncelle</a>
+            </td>
+        </tr>
+    }
+
+</table>
+
+<a href="/UserMessage/CreateUserMessage/" class="btn btn-outline-primary">Yeni Mesaj Oluştur</a>
