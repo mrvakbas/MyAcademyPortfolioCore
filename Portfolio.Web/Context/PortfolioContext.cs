@@ -21,6 +21,7 @@ namespace Portfolio.Web.Context
         public DbSet<Testimonial> Testimonials { get; set; }
         public DbSet<UserMessage> UserMessages { get; set; }
         public DbSet<ContactInfo> ContactInfos { get; set; }
+        public DbSet<SocialMedia> SocialMedias { get; set; }
 
     }
 }

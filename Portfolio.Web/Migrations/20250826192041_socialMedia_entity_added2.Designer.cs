@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Portfolio.Web.Context;
 
@@ -11,9 +12,11 @@ using Portfolio.Web.Context;
 namespace Portfolio.Web.Migrations
 {
     [DbContext(typeof(PortfolioContext))]
-    partial class PortfolioContextModelSnapshot : ModelSnapshot
+    [Migration("20250826192041_socialMedia_entity_added2")]
+    partial class socialMedia_entity_added2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -282,7 +285,7 @@ namespace Portfolio.Web.Migrations
 
                     b.HasKey("SocialMediaID");
 
-                    b.ToTable("SocialMedias");
+                    b.ToTable("socialMedias");
                 });
 
             modelBuilder.Entity("Portfolio.Web.Entities.Testimonial", b =>
