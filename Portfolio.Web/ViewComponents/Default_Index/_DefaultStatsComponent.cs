@@ -1,11 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Portfolio.Web.Context;
 
 namespace Portfolio.Web.ViewComponents.Default_Index
 {
-    public class _DefaultStatsComponent : ViewComponent
+    public class _DefaultStatsComponent(PortfolioContext context) : ViewComponent
     {
         public IViewComponentResult Invoke()
         {
+            ViewBag.projectCount = context.Projects.Count();
+            ViewBag.skillCount = context.Skills.Count();
+            ViewBag.testimonialCount = context.Testimonials.Count();
+            ViewBag.educationCount = context.Educations.Count();
             return View();
         }
     }

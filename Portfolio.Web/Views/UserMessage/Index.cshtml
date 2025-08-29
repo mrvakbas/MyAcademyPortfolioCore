@@ -11,7 +11,6 @@
         <th>Ad Soyad</th>
         <th>Email</th>
         <th>Konu</th>
-        <th>Mesaj</th>
         <th>Durum</th>
         <th>İşlemler</th>
     </tr>
@@ -24,11 +23,21 @@
             <td>@item.Name</td>
             <td>@item.Email</td>
             <td>@item.Subject</td>
-            <td>@item.MessageBody</td>
             <td>@item.IsRead</td>
             <td>
+                <button class="btn btn-outline-primary btn-sm show-detail" type="button" data-id="@item.UserMessageId">
+                    Mesaj Detay
+                </button>
                 <a href="/UserMessage/DeleteUserMessage/@item.UserMessageId" class="btn btn-outline-danger">Sil</a>
-                <a href="/UserMessage/UpdateUserMessage/@item.UserMessageId" class="btn btn-outline-info">Güncelle</a>
+
+                @if (item.IsRead == true)
+                {
+                    <a href="/UserMessage/ChangeMessageIsReadToFalse/@item.UserMessageId" class="btn btn-outline-warning">Okunmadı Olarak İşaretle</a>
+                }
+                else
+                {
+                    <a href="/UserMessage/ChangeMessageIsReadToTrue/@item.UserMessageId" class="btn btn-outline-success">Okundu Olarak İşaretle</a>
+                }
             </td>
         </tr>
     }
@@ -36,3 +45,27 @@
 </table>
 
 <a href="/UserMessage/CreateUserMessage/" class="btn btn-outline-primary">Yeni Mesaj Oluştur</a>
+
+<div class="modal fade" id="infoModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body"></div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+<script>
+                            $(function(){
+      $('.show-detail').click(function(){
+        var id = $(this).data('id');
+        $.get('@Url.Action("DetailCard", "UserMessage")', { id: id })
+          .done(function(html){
+            $('#infoModal .modal-body').html(html);
+            $('#infoModal').modal('show');
+          });
+      });
+    });
+</script>

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Portfolio.Web.Context;
 
 namespace Portfolio.Web.Controllers
@@ -20,6 +21,11 @@ namespace Portfolio.Web.Controllers
             ViewBag.reviewAverage = context.Testimonials.Any() ? context.Testimonials.Average(x=>x.Review).ToString("0.0") : "Değerlendirme Yapılmadı";
 
             ViewBag.maxReviewOwner = context.Testimonials.OrderByDescending(x => x.Review).Select(x => x.Name).FirstOrDefault();
+
+            ViewBag.trueMessage = context.UserMessages.Where(x => x.IsRead == true).Count();
+            ViewBag.falseMessage = context.UserMessages.Where(x => x.IsRead == false).Count();
+            ViewBag.education = context.Educations.Count();
+            ViewBag.testimonialCount = context.Testimonials.Count();
 
             return View();
         }

@@ -1,0 +1,32 @@
+﻿@model UserMessage
+
+
+<input type="hidden" name="UserMessageId" />
+
+<div class="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card">
+					<div class="card-body">
+						<div class="card-sub">
+                            <h4>Mesaj Detay</h4>
+                            <br />
+							Gönderen: <b>@Model.Name</b>
+							<br />
+                            <hr />
+							Mail: <b class="me-4">@Model.Email</b> 
+							Konu: <b class="me-4"> @Model.Subject</b>			
+							Durum: <b>@Model.IsRead</b>
+							<br /><br />
+
+							Mesaj: <b>@Model.MessageBody</b>
+						</div>
+                        <br />
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Çıkış Yap</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

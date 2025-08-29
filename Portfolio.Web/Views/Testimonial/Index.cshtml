@@ -8,9 +8,9 @@
 <table class="table table-bordered table-hover">
     <tr>
         <th>#</th>
+        <th>Resim Url</th>
         <th>Ad Soyad</th>
         <th>Başlık</th>
-        <th>Resim Url</th>
         <th>Yorum</th>
         <th>Yıldız</th>
         <th>İşlemler</th>
@@ -21,9 +21,9 @@
         count++;
         <tr>
             <th>@count</th>
+            <td> <img src="@item.ImageUrl" style="width:75px; height:75px; border-radius:10px" /> </td>
             <td>@item.Name</td>
             <td>@item.Title</td>
-            <td>@item.ImageUrl</td>
             <td>@item.Comment</td>
             <td>@item.Review</td>
             <td>

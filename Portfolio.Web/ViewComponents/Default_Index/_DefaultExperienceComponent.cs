@@ -3,12 +3,12 @@ using Portfolio.Web.Context;
 
 namespace Portfolio.Web.ViewComponents.Default_Index
 {
-    public class _DefaultSkillsComponent(PortfolioContext context) : ViewComponent
+    public class _DefaultExperienceComponent(PortfolioContext context) : ViewComponent
     {
         public IViewComponentResult Invoke()
         {
-            var skill = context.Skills.ToList();
-            return View(skill);
+            var experience = context.Experiences.ToList();
+            return View(experience);
         }
     }
 }

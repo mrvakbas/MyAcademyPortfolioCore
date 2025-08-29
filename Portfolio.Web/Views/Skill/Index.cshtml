@@ -19,7 +19,14 @@
         <tr>
             <th>@count</th>
             <td>@item.Title</td>
-            <td>@item.Percentage</td>
+            <td>
+                @item.Percentage %
+                <span>
+                    <div class="progress" style="height: 6px">
+                        <div class="progress-bar bg-success" style="width: @item.Percentage%"></div>
+                    </div>
+                </span>
+            </td>
             <td>
                 <a href="/Skill/DeleteSkill/@item.SkillId" class="btn btn-outline-danger">Sil</a>
                 <a href="/Skill/UpdateSkill/@item.SkillId" class="btn btn-outline-info">Güncelle</a>
