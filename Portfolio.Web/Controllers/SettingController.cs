@@ -13,6 +13,22 @@ namespace Portfolio.Web.Controllers
             var userList = context.Users.ToList();
             return View(userList);
         }
+        [HttpGet]
+        public IActionResult UserPassword(int id)
+        {
+            var user = context.Users.Find(id);
+            return View();
+        }
+        [HttpPost]
+        public IActionResult UserPassword(User user)
+        {
+            User p = context.Users.FirstOrDefault();
+            if (p.Password == user.Password)
+            {
+                return RedirectToAction("UpdateUser","Setting");
+            }
+            return View();
+        }
 
         [HttpGet]
         public IActionResult UpdateUser(int id)
